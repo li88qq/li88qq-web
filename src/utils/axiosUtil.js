@@ -85,10 +85,7 @@ const checkResponse = (response) => {
     if (method === 'GET') {
         message.error({content: msg || '查询失败！'})
     } else if (method === 'POST') {
-        // message.error({content: msg || '操作失败！'})
-        Modal.error({
-            content: msg || '操作失败！'
-        })
+        Modal.error({content: msg || '操作失败！'})
     }
     return Promise.reject(new Error('操作失败!'));
 }
