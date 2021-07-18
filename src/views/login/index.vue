@@ -9,7 +9,10 @@
           <a-input-password v-model:value="formRt.password"/>
         </a-form-item>
         <a-form-item label="验证码" name="code">
-          <a-input v-model:value="formRt.code"/>
+          <div style="display: flex;flex-direction: row;">
+            <a-input v-model:value="formRt.code" style="flex:1;"/>
+            <img :src="codeRef" @click="changeAc" style="width: 160px;"/>
+          </div>
         </a-form-item>
         <a-form-item :wrapper-col="{span:16,offset:4}">
           <a-button type="primary" block @click="loginAc">登录</a-button>
@@ -20,8 +23,10 @@
 </template>
 
 <script>
-import {defineComponent, reactive, toRaw} from 'vue';
+import {defineComponent, reactive, ref, toRaw, onMounted} from 'vue';
 import {login} from '/@/api/login'
+import {getCaptcha} from '/@/api/p'
+import {useRouter} from 'vue-router'
 
 export default defineComponent({
   name: '',
@@ -34,10 +39,30 @@ export default defineComponent({
       code: ''
     })
 
+    const codeRef = ref('')
+    const {replace} = useRouter();
+
     const loginAc = async () => {
-      await login(toRaw(formRt))
+      try {
+        await login(toRaw(formRt))
+        replace('/home').catch((()=>{}))
+      } catch (err) {
+
+      }
     }
-    return {formRt, loginAc}
+    const changeAc = () => {
+      queryCode()
+    }
+
+    const queryCode = async () => {
+      const blob = await getCaptcha();
+      codeRef.value = URL.createObjectURL(blob);
+    }
+
+    onMounted(() => {
+      queryCode()
+    })
+    return {formRt, codeRef, loginAc, changeAc}
   }
 })
 </script>
