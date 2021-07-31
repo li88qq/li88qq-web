@@ -1,5 +1,5 @@
 import axios from "axios";
-import {message, Modal} from 'ant-design-vue'
+import {message, Modal} from 'ant-design-vue';
 
 const vAxios = axios.create({
     baseURL: '/api'
@@ -82,6 +82,10 @@ const checkResponse = (response) => {
         }
         return data.data;
     }
+    if(code===2){ //未登录
+      window.location.href = '/login';
+      return;
+    }
     if (method === 'GET') {
         message.error({content: msg || '查询失败！'})
     } else if (method === 'POST') {
@@ -107,5 +111,13 @@ vAxios.interceptors.response.use(function (response) {
     checkErrorStatus(error);
     return Promise.reject(error);
 });
+
+vAxios.upload = (url, params) => {
+    const formData = new FormData();
+    for(let k in params){
+
+    }
+    return vAxios.post(url,)
+}
 
 export default vAxios
