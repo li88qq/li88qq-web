@@ -82,9 +82,9 @@ const checkResponse = (response) => {
         }
         return data.data;
     }
-    if(code===2){ //未登录
-      window.location.href = '/login';
-      return;
+    if (code === 2) { //未登录
+        window.location.href = '/login';
+        return;
     }
     if (method === 'GET') {
         message.error({content: msg || '查询失败！'})
@@ -112,12 +112,13 @@ vAxios.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 
+//上传文件
 vAxios.upload = (url, params) => {
     const formData = new FormData();
-    for(let k in params){
-
+    for (let k in params) {
+        formData.append(k, params[k]);
     }
-    return vAxios.post(url,)
+    return vAxios.post(url,formData,{headers:{'Content-Type': ' multipart/form-data'}})
 }
 
 export default vAxios
