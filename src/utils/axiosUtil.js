@@ -74,8 +74,9 @@ const checkResponse = (response) => {
     let code = data.code;
     let msg = data.msg;
     let method = response.config.method.toUpperCase();
+    const showMsg = response.config.showMsg || true;
     if (code === 0) {
-        if (method === 'POST') {
+        if (method === 'POST' && showMsg) {
             Modal.success({
                 content: msg || '操作成功！'
             })
@@ -118,7 +119,7 @@ vAxios.upload = (url, params) => {
     for (let k in params) {
         formData.append(k, params[k]);
     }
-    return vAxios.post(url,formData,{headers:{'Content-Type': ' multipart/form-data'}})
+    return vAxios.post(url, formData, {headers: {'Content-Type': ' multipart/form-data'}})
 }
 
 export default vAxios
