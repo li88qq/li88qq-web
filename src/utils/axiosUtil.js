@@ -74,9 +74,9 @@ const checkResponse = (response) => {
     let code = data.code;
     let msg = data.msg;
     let method = response.config.method.toUpperCase();
-    const showMsg = response.config.showMsg || true;
+    const hideMsg = response.config.hideMsg
     if (code === 0) {
-        if (method === 'POST' && showMsg) {
+        if (method === 'POST' && !hideMsg) {
             Modal.success({
                 content: msg || '操作成功！'
             })
