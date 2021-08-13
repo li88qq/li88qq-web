@@ -4,7 +4,7 @@ export function dfColumns(columns) {
         return;
     }
     columns.forEach(a => {
-        a.align = 'center'
+        a.align = a.align || 'center'
         a.ellipsis = 'true'
     })
     return columns;

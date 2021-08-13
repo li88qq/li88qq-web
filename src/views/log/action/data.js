@@ -45,6 +45,6 @@ export const columns = ({}) => [
         }
     },
     {dataIndex: 'title', title: '标题',width: 200,},
-    {dataIndex: 'detail', title: '详情',},
+    {dataIndex: 'detail', title: '详情',align: 'left'},
     {dataIndex: 'ip', title: 'IP',width: 160,},
 ];
