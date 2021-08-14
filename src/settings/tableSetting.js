@@ -25,7 +25,7 @@ export function dfPagination(query, params) {
             if (query) {
                 params = params || {};
                 params.page = page;
-                params.pageSize = pageSize;
+                params.size = pageSize;
                 query(params);
             }
         },
@@ -34,7 +34,7 @@ export function dfPagination(query, params) {
             if (query) {
                 params = params || {};
                 params.page = current;
-                params.pageSize = size;
+                params.size = size;
                 query(params);
             }
         },
