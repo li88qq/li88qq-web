@@ -42,7 +42,6 @@ export const columns = ({toView}) => [
                 return;
             }
             const arr = text.split(',');
-            console.log(arr);
             const div = [];
             arr.forEach(a => {
                 div.push(h(Tag, {color: 'green'}, () => a));

@@ -64,7 +64,6 @@ export const columns = ({toView, deleteAc, editAc}) => [
                 return;
             }
             const arr = text.split(',');
-            console.log(arr);
             const div = [];
             arr.forEach(a => {
                 div.push(h(Tag, {color: 'green'}, () => a));
