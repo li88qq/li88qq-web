@@ -4,14 +4,14 @@
       <a-card :title="'欢迎登录'+envRt.name+'平台'" class="login-form">
         <a-form ref="formRef" :model="formRt" :label-col="{span:4}" :wrapper-col="{span:16}" :rules="rules">
           <a-form-item label="用户名" name="username">
-            <a-input v-model:value="formRt.username"/>
+            <a-input v-model:value="formRt.username" :maxlength="20" allow-clear/>
           </a-form-item>
           <a-form-item label="密码" name="password">
-            <a-input-password v-model:value="formRt.password"/>
+            <a-input-password v-model:value="formRt.password" :maxlength="20" allow-clear/>
           </a-form-item>
           <a-form-item label="验证码" name="code">
             <div style="display: flex;flex-direction: row;">
-              <a-input v-model:value="formRt.code" style="flex:1;" @keyup.enter="loginAc"/>
+              <a-input v-model:value="formRt.code" style="flex:1;" @keyup.enter="loginAc" :maxlength="4" allow-clear/>
               <img :src="codeRef" @click="changeAc" style="width: 120px;height: 32px;"/>
             </div>
           </a-form-item>
