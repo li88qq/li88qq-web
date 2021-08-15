@@ -74,6 +74,7 @@ export default defineComponent({
         tableRt.loading = true;
         const data = await loginPage(params)
         tableRt.datasource = data.content;
+        tableRt.pagination.total = data.totalElements;
       } catch (err) {
 
       } finally {
