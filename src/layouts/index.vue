@@ -28,8 +28,8 @@
           <a-menu-item key="navigation">导航</a-menu-item>
           <a-menu-item key="timestamp">时间戳</a-menu-item>
           <a-menu-item key="json">JSON</a-menu-item>
-          <a-menu-item key="qrcode">二维码</a-menu-item>
-          <a-menu-item key="base64">base64</a-menu-item>
+          <a-menu-item key="qrcode">QrCode</a-menu-item>
+          <a-menu-item key="base64">Base64</a-menu-item>
         </a-sub-menu>
         <a-sub-menu key="article">
           <template #icon>
