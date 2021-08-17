@@ -31,7 +31,7 @@
           <p>{{ envRt.url2 }}</p>
         </a>
       </div>
-      <div><p>{{envRt.copyRight}}</p></div>
+      <div><p>{{ envRt.copyRight }}</p></div>
     </div>
   </div>
 </template>
@@ -41,6 +41,7 @@ import {defineComponent, reactive, ref, toRaw, onMounted} from 'vue';
 import {login} from '/@/api/login'
 import {getCaptcha} from '/@/api/p'
 import {useRouter} from 'vue-router'
+import {loginStore} from "/@/store";
 
 export default defineComponent({
   name: '',
@@ -68,7 +69,9 @@ export default defineComponent({
       try {
         const data = await formRef.value.validate();
         await login(data)
-        replace('/my/view').catch(()=>{})
+        loginStore.commit('login')
+        replace('/my/view').catch(() => {
+        })
       } catch (err) {
 
       }

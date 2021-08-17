@@ -9,6 +9,7 @@ import {defineComponent, onMounted} from 'vue';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import moment from 'moment';
 import 'moment/dist/locale/zh-cn';
+import {loginStore} from "/@/store";
 
 export default defineComponent({
   name: '',
@@ -21,6 +22,7 @@ export default defineComponent({
 
     onMounted(() => {
       initLocal();
+      loginStore.commit('check');
     })
     return {zhCN}
   }

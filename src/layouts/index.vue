@@ -85,6 +85,7 @@ import {defineComponent, ref, reactive, watch, toRefs} from 'vue';
 import {useRouter} from 'vue-router';
 import {Modal} from 'ant-design-vue';
 import {logout} from '/@/api/login';
+import {loginStore} from "/@/store";
 
 export default defineComponent({
   components: {
@@ -124,6 +125,7 @@ export default defineComponent({
         content: '您确定登出平台吗?',
         onOk: async () => {
           await logout();
+          loginStore.commit('logout')
           setTimeout(() => {
             location.href = '/login';
           }, 3000);
