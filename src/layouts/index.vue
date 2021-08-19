@@ -64,7 +64,9 @@
         <div class="header-right">
           <div class="header-item">
             <a-avatar :size="32">
-              <template #icon><UserOutlined /></template>
+              <template #icon>
+                <UserOutlined/>
+              </template>
             </a-avatar>
           </div>
           <div class="header-item">
@@ -150,13 +152,24 @@ export default defineComponent({
       });
     };
 
-    const initInfo = async () => {
+    const initInfo = async () => { //查询个人基本信息
       const data = await getInfo();
       infoRt.nickname = data.nickname || '--';
       infoRt.photo = data.photo;
-    }
+    };
+
+    const initMenu = () => { //设置菜单
+      const pathname = window.location.pathname;
+      const paths = pathname.split("/");
+      const menus = paths.filter((a) => a !== '');
+      if (menus.length > 0) {
+        state.openKeys = menus;
+        state.selectedKeys = [menus[menus.length - 1]];
+      }
+    };
 
     onMounted(() => {
+      initMenu();
       initInfo();
     });
 
@@ -213,7 +226,8 @@ export default defineComponent({
   flex-direction: row;
   align-items: center;
 }
-.header-item{
+
+.header-item {
   margin-left: 10px;
 }
 </style>
