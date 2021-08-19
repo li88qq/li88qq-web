@@ -163,8 +163,9 @@ export default defineComponent({
       const paths = pathname.split("/");
       const menus = paths.filter((a) => a !== '');
       if (menus.length > 0) {
-        state.openKeys = menus;
-        state.selectedKeys = [menus[menus.length - 1]];
+        const menu = menus[menus.length - 1];
+        state.openKeys = [menus[0]];
+        state.selectedKeys = [menu];
       }
     };
 
