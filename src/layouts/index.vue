@@ -33,7 +33,7 @@
         </a-sub-menu>
         <a-sub-menu key="article">
           <template #icon>
-            <GithubOutlined />
+            <GithubOutlined/>
           </template>
           <template #title>文章</template>
           <a-menu-item key="my">我的文章</a-menu-item>
@@ -62,8 +62,17 @@
         <div class="header-left">
         </div>
         <div class="header-right">
-          <span>昵称[角色]</span>
-          <a-button type="link" @click="logoutAc">登出</a-button>
+          <div class="header-item">
+            <a-avatar :size="32">
+              <template #icon><UserOutlined /></template>
+            </a-avatar>
+          </div>
+          <div class="header-item">
+            <span>{{ infoRt.nickname }}</span>
+          </div>
+          <div class="header-item">
+            <a-button type="link" @click="logoutAc">登出</a-button>
+          </div>
         </div>
       </a-layout-header>
       <div class="layout-wrapper"></div>
@@ -80,12 +89,14 @@ import {
   FormOutlined,
   AndroidOutlined,
   GithubOutlined,
+  UserOutlined,
 } from '@ant-design/icons-vue';
-import {defineComponent, ref, reactive, watch, toRefs} from 'vue';
+import {defineComponent, ref, reactive, watch, toRefs, onMounted,} from 'vue';
 import {useRouter} from 'vue-router';
 import {Modal} from 'ant-design-vue';
 import {logout} from '/@/api/login';
 import {loginStore} from "/@/store";
+import {info as getInfo} from "/@/api/my";
 
 export default defineComponent({
   components: {
@@ -94,6 +105,7 @@ export default defineComponent({
     FormOutlined,
     AndroidOutlined,
     GithubOutlined,
+    UserOutlined,
   },
   setup() {
     const state = reactive({
@@ -101,6 +113,11 @@ export default defineComponent({
       openKeys: ['my'],
       selectedKeys: [],
     });
+
+    const infoRt = reactive({
+      nickname: '',
+      photo: '',
+    })
 
     const onOpenChange = openKeys => {
       const latestOpenKey = openKeys.find(key => state.openKeys.indexOf(key) === -1);
@@ -133,7 +150,17 @@ export default defineComponent({
       });
     };
 
-    return {...toRefs(state), onOpenChange, toPath, logoutAc};
+    const initInfo = async () => {
+      const data = await getInfo();
+      infoRt.nickname = data.nickname || '--';
+      infoRt.photo = data.photo;
+    }
+
+    onMounted(() => {
+      initInfo();
+    });
+
+    return {...toRefs(state), infoRt, onOpenChange, toPath, logoutAc};
   },
 });
 </script>
@@ -182,5 +209,11 @@ export default defineComponent({
 
 .header-right {
   text-align: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header-item{
+  margin-left: 10px;
 }
 </style>
