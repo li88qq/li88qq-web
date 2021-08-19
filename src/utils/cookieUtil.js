@@ -4,7 +4,6 @@
  */
 function getCookie(key) {
     const cookies = document.cookie;
-    console.log(cookies)
     if (!cookies || cookies === '') {
         return '';
     }
