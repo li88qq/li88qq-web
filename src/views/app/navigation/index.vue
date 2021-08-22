@@ -38,7 +38,7 @@
         <a-row>
           <template v-if="item.list.length>0" v-for="nav in item.list" :key="nav.id">
             <a-col span="4" class="nav-wrapper">
-              <a-tooltip placement="topLeft" :title="nav.remark" class="nav-text">
+              <a-tooltip placement="top" :title="nav.remark" class="nav-text">
                 <a-button type="link" @click="clickAc(nav)" size="small">{{ nav.name }}</a-button>
               </a-tooltip>
               <a-popconfirm
@@ -143,6 +143,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .nav-text {
