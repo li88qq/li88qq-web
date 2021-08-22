@@ -8,7 +8,7 @@
         <a-col span="12" class="form-action">
           <a-button type="primary" @click="changeShowType(false)">格式化</a-button>
           <a-button type="primary" @click="changeShowType(true)">压缩</a-button>
-          <a-button type="primary" @click="emptyAc">清空</a-button>
+          <a-button type="primary" danger @click="emptyAc">清空</a-button>
           <a-button type="primary" @click="copyToClip">复制到剪切板</a-button>
         </a-col>
       </a-row>
