@@ -53,18 +53,17 @@ export default defineComponent({
         const content = vditor.getValue();
         data.content = content;
         await save(data)
-
-        //重置内容,并清除缓存内容
-        vditor.setValue("", true);//设置编辑器内容且选中清空历史栈
-        vditor.clearStack();//清空撤销和重做记录栈
-        vditor.clearCache();//清除缓存
+        resetAc();
       } catch (err) {
       }
     };
 
     //重置编辑器内容
     const resetAc = () => {
-      vditor.setValue('', true);
+      //重置内容,并清除缓存内容
+      vditor.setValue("", true);//设置编辑器内容且选中清空历史栈
+      vditor.clearStack();//清空撤销和重做记录栈
+      vditor.clearCache();//清除缓存
     }
 
     //跳转编辑器文档
