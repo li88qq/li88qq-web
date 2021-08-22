@@ -38,7 +38,7 @@
         <a-row>
           <template v-if="item.list.length>0" v-for="nav in item.list" :key="nav.id">
             <a-col span="4" class="nav-wrapper">
-              <a-tooltip placement="topLeft" :title="nav.remark">
+              <a-tooltip placement="topLeft" :title="nav.remark" class="nav-text">
                 <a-button type="link" @click="clickAc(nav)" size="small">{{ nav.name }}</a-button>
               </a-tooltip>
               <a-popconfirm
@@ -47,7 +47,7 @@
                   cancel-text="取消"
                   @confirm="deleteAc(nav.id)"
               >
-                <a-button v-show="editRef" type="link" danger size="small">
+                <a-button v-show="editRef" type="link" danger size="small" style="border-right: 1px solid #999">
                   <template #icon>
                     <CloseCircleOutlined/>
                   </template>
@@ -142,7 +142,12 @@ export default defineComponent({
 .nav-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.nav-text {
+  flex: 1;
+  text-align: center;
 }
 
 .nav-container {
