@@ -38,7 +38,8 @@ export default defineComponent({
 
     const initEditor = () => {
       vditor = new Vditor('editor', {
-        mode: 'sv',
+        mode: 'ir',//双屏模式有bug
+        cache: false,//禁止缓存,有bug
       })
     }
 
