@@ -1,7 +1,7 @@
 <template>
   <a-form ref="formRef" :model="formRt" :label-col="{span:6}" :wrapper-col="{span:18}" :rules="rules">
     <a-form-item name="title" label="标题">
-      <a-input v-model:value="formRt.title" maxlength="50" allow-clear/>
+      <a-input v-model:value="formRt.title" :maxlength="50" allow-clear/>
     </a-form-item>
     <a-form-item name="original" label="是否原创">
       <a-radio-group v-model:value="formRt.original">
@@ -10,7 +10,7 @@
       </a-radio-group>
     </a-form-item>
     <a-form-item name="quote" label="引用地址">
-      <a-input v-model:value="formRt.quote" maxlength="255" allow-clear/>
+      <a-input v-model:value="formRt.quote" :maxlength="255" allow-clear/>
     </a-form-item>
     <a-form-item name="open" label="是否公开">
       <a-radio-group v-model:value="formRt.open">
@@ -19,7 +19,7 @@
       </a-radio-group>
     </a-form-item>
     <a-form-item name="labels" label="标签">
-      <a-input v-model:value="formRt.labels" maxlength="255" allow-clear/>
+      <a-input v-model:value="formRt.labels" :maxlength="100" allow-clear/>
     </a-form-item>
   </a-form>
 </template>
