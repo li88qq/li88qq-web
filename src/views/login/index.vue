@@ -9,10 +9,10 @@
         <a-form ref="formRef" :model="formRt" :label-col="{span:4}" :wrapper-col="{span:16}" :rules="rules">
           <div v-show="formRt.type===0">
             <a-form-item label="用户名" name="username">
-              <a-input v-model:value="formRt.username" :maxlength="20" allow-clear/>
+              <a-input v-model:value="formRt.username" :maxlength="12" allow-clear/>
             </a-form-item>
             <a-form-item label="密码" name="password">
-              <a-input-password v-model:value="formRt.password" :maxlength="20" allow-clear/>
+              <a-input-password v-model:value="formRt.password" :maxlength="12" allow-clear/>
             </a-form-item>
             <a-form-item label="验证码" name="code">
               <div style="display: flex;flex-direction: row;">
