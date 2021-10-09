@@ -55,7 +55,7 @@
 
 <script>
 import {defineComponent, reactive, ref, toRaw, onMounted} from 'vue';
-import {login} from '/@/api/login'
+import {login, loginMobile} from '/@/api/login'
 import {getCaptcha} from '/@/api/p'
 import {useRouter} from 'vue-router'
 import {loginStore} from "/@/store";
@@ -70,8 +70,8 @@ export default defineComponent({
       username: 'test',
       password: '123456',
       code: '',
-      mobile: '',
-      smsCode: '',
+      mobile: '12345678901',
+      smsCode: '123456',
       type: 1,
     })
     const envRt = reactive({
@@ -88,12 +88,16 @@ export default defineComponent({
     const loginAc = async () => {
       try {
         const data = await formRef.value.validate();
-        await login(data)
+        if (formRt.type === 1) {
+          await loginMobile(data)
+        } else if (formRt.type === 0) {
+          await login(data)
+        }
+
         loginStore.commit('login')
         replace('/my/view').catch(() => {
         })
       } catch (err) {
-
       }
     }
     const changeAc = () => {
