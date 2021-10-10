@@ -28,7 +28,9 @@
             <a-form-item label="验证码" name="smsCode">
               <div style="display: flex;flex-direction: row;justify-content: space-between;">
                 <a-input v-model:value="formRt.smsCode" :maxlength="6" allow-clear/>
-                <a-button type="link">获取短信验证码</a-button>
+                <a-button type="link" @click="getSmsCodeAc" :loading="smsRt.loading">
+                  {{ smsRt.text }}
+                </a-button>
               </div>
             </a-form-item>
           </div>
@@ -56,9 +58,10 @@
 <script>
 import {defineComponent, reactive, ref, toRaw, onMounted} from 'vue';
 import {login, loginMobile} from '/@/api/login'
-import {getCaptcha} from '/@/api/p'
+import {getCaptcha, smsCode} from '/@/api/p'
 import {useRouter} from 'vue-router'
 import {loginStore} from "/@/store";
+import {message} from "ant-design-vue";
 
 export default defineComponent({
   name: '',
@@ -70,9 +73,9 @@ export default defineComponent({
       username: 'test',
       password: '123456',
       code: '',
-      mobile: '12345678901',
-      smsCode: '123456',
-      type: 1,
+      mobile: '',
+      smsCode: '',
+      type: 0,
     })
     const envRt = reactive({
       url: '',
@@ -80,7 +83,13 @@ export default defineComponent({
       url2: '',
       name: '',
       copyRight: '',
-    })
+    });
+    //短信验证码配置
+    const smsRt = reactive({
+      loading: false,
+      text: '获取短信验证码',
+      time: 5,
+    });
 
     const codeRef = ref('')
     const {replace} = useRouter();
@@ -219,11 +228,43 @@ export default defineComponent({
       formRt.type = type;
     };
 
+    //获取短信验证码
+    const getSmsCodeAc = async () => {
+      //校验手机号码
+      try {
+        formRt.smsCode = '';
+        await validateMobile(null, formRt.mobile);
+      } catch (err) {
+        message.error(err);
+        return;
+      }
+      await sendSmsCodeAc(formRt.mobile);
+    };
+
+    //发送短信验证码
+    const sendSmsCodeAc = async (mobile) => {
+      let time = smsRt.time * 60;
+      const interval = setInterval(() => {
+        smsRt.loading = true;
+        smsRt.text = '获取短信验证码(' + time-- + ')';
+      }, 1000);
+      try {
+        await smsCode({mobile: mobile});
+        message.success('短信验证码已发送,请注意查收!');
+      } finally {
+        setTimeout(() => {
+          clearInterval(interval);
+          smsRt.loading = false;
+          smsRt.text = '获取短信验证码';
+        }, time * 1000);
+      }
+    };
+
     onMounted(() => {
       init()
       queryCode()
     })
-    return {formRef, formRt, codeRef, envRt, rules, loginAc, changeAc, changeTypeAc,}
+    return {formRef, formRt, codeRef, envRt, smsRt, rules, loginAc, changeAc, changeTypeAc, getSmsCodeAc,}
   }
 })
 </script>
