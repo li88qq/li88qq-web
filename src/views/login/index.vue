@@ -250,7 +250,6 @@ export default defineComponent({
       }, 1000);
       try {
         await smsCode({mobile: mobile});
-        message.success('短信验证码已发送,请注意查收!');
       } finally {
         setTimeout(() => {
           clearInterval(interval);
