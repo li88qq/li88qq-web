@@ -43,13 +43,13 @@ export class vAxios {
     }
 
     get<T = any>(url: string, params?: any, noError?: boolean): Promise<T> {
-        const {getToken} = useUserStore()
-        return this.request({url, method: 'GET', params: params, noError, headers: {'amtoken': getToken}});
+        const userStore = useUserStore()
+        return this.request({url, method: 'GET', params: params, noError, headers: {'amtoken': userStore.token}});
     }
 
     post<T = any>(url: string, data?: any, noError?: boolean): Promise<T> {
-        const {getToken} = useUserStore()
-        return this.request({url, method: 'POST', data: data, noError, headers: {'amtoken': getToken}});
+        const userStore = useUserStore()
+        return this.request({url, method: 'POST', data: data, noError, headers: {'amtoken': userStore.token}});
     }
 
     request<T = any>(config: Request): Promise<T> {
