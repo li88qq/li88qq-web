@@ -1,23 +1,13 @@
 <template>
-  <Iconify :icon="icon" :class="compClass"></Iconify>
+  <Iconify :icon="icon" :class="{anticon:btn}"></Iconify>
 </template>
 
-<script lang="ts">
-import {computed, defineComponent, toRaw} from 'vue'
-import {Icon as Iconify} from "@iconify/vue";
+<script setup>
+import {Icon as Iconify} from '@iconify/vue';
 
-export default defineComponent({
-  name: 'Icon',
-  props: {icon: {}, btn: {}},
-  components: {Iconify},
-  emits: [],
-  setup(props) {
-    const compClass = computed(() => {
-      if (toRaw(props).btn) {
-        return 'anticon';
-      }
-    })
-    return {compClass}
-  }
+defineProps({
+  icon: {type: String, required: true, default: ''},
+  btn: {type: Boolean, required: false, default: false},
 })
+
 </script>
