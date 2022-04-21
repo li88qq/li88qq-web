@@ -1,7 +1,6 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## 后台管理前端页面项目
+### 功能介绍
+- 前台数据展示,管理
+- 后台数据展示,管理
+- 监控数据展示,包括服务器,redis,数据库,
+- 定时任务配置
