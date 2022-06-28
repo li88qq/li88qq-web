@@ -25,7 +25,7 @@ export const navigation = [
         title: 'pinia',
         icon: 'https://pinia.vuejs.org/logo.png',
         url: 'https://pinia.vuejs.org/',
-        remark: 'pinia状态管理,代替vuex'
+        remark: '状态管理,代替vuex'
     },
     {name: 'axios', title: 'axios', icon: '', url: 'https://www.kancloud.cn/yunye/axios/234845', remark: 'http请求工具'},
     {

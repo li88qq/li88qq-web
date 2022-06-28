@@ -9,7 +9,7 @@
     </a-card>
     <a-card size="small" class="flex-1 mt-4">
       <template v-for="item in navsRef" :key="item.name">
-        <a-card-grid style="width: 20%; text-align: center" @click="toPath(item.url)">
+        <a-card-grid style="text-align: center" @click="toPath(item.url)" class="lg:w-1/4 xl:w-1/5">
           <div class="flex flex-row items-center">
             <div class="h-8 w-8">
               <a-image v-if="item.icon" :fallback="DEFAULT_IMG" :src="item.icon" :preview="false"/>
