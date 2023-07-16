@@ -1,12 +1,13 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
-import {basicRoot} from './routes'
+import {createRouter,createWebHistory} from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
-const routes: RouteRecordRaw[] = [...basicRoot]
+import { INDEX, PAGE404 } from './routes'
+
+const routes:RouteRecordRaw[] = [INDEX,PAGE404]
 
 const router = createRouter({
     routes,
-    history: createWebHistory()
+    history:createWebHistory()
 })
 
-export {routes, router}
-
+export default router

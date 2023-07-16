@@ -1,4 +1,16 @@
-import {ROOT, LOGIN} from './basic'
-import {RouteRecordRaw} from "vue-router";
+import {RouteRecordRaw} from 'vue-router'
 
-export const basicRoot: RouteRecordRaw[] = [ROOT, LOGIN]
+/**
+ * 首页
+ */
+export const INDEX:RouteRecordRaw = {
+    path:'/',component:()=>import('@/views/index.vue'),meta:{title:'首页'}
+}
+
+/**
+ * 404
+ */
+export const PAGE404:RouteRecordRaw = {
+    path:'/:pathMatch(.*)',component:()=>import('@/views/error/404.vue'),meta:{title:'404'}
+}
+
