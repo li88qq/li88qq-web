@@ -1,8 +1,10 @@
 <template>
   <a-layout-content style="display: flex;flex-direction: column;">
-    <MenuTabs></MenuTabs>
-    <RouterView>
-    </RouterView>
+<!--    <MenuTabs></MenuTabs>-->
+    <div class="layout-content">
+      <RouterView>
+      </RouterView>
+    </div>
   </a-layout-content>
 </template>
 <script setup lang="ts">

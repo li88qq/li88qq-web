@@ -32,8 +32,8 @@ export const useAppStore = defineStore('appStore', {
         theme:'light',
         layout: 'mix',
         colorPrimary:'#1677ff',
-        themeTop:'#1677ff',
-        themeSider:'#1677ff',
+        themeTop:'#5A54F9',
+        themeSider:'#9E339F',
         gray:false,
         invert:false,
         watermark:{
