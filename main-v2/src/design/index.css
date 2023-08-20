@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/*灰色模式*/
+.gray {
+    filter: grayscale(100%);
+}
+
+/*色弱模式*/
+.invert {
+    filter: invert(80%);
+}

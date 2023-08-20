@@ -1,22 +1,4 @@
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
-/*灰色模式*/
-.gray {
-    filter: grayscale(100%);
-}
-
-/*色弱模式*/
-.invert {
-    filter: invert(80%);
-}
-
-
-
 /********************栅格5****开始*********************/
-
 .ant-col-5{
     flex: 0 0 20%;
     max-width: 20%;
