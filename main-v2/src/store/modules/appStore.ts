@@ -21,7 +21,9 @@ export interface State {
     //色弱模式
     invert:boolean,
     //水印
-    watermark:Watermark
+    watermark:Watermark,
+    //国际化
+    local: string,
 }
 
 /**
@@ -39,7 +41,8 @@ export const useAppStore = defineStore('appStore', {
         watermark:{
             show:false,
             content:''
-        }
+        },
+        local:'zhCN',
     }),
     persist:true,
 })
