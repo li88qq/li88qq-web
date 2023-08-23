@@ -15,12 +15,14 @@
       </div>
     </template>
     <slot></slot>
+    <AppTooltip></AppTooltip>
   </div>
 </template>
 <script setup lang="ts">
 import {ref, reactive, useSlots, useAttrs, computed} from 'vue'
 import type {PageViewProps} from './types'
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons-vue'
+import {AppTooltip} from '@/components/global'
 
 const props = withDefaults(defineProps<PageViewProps>(), {})
 

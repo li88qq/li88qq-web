@@ -13,3 +13,4 @@ export const setupStore = (app:App)=>{
 }
 
 export {useAppStore} from './modules/appStore'
+export {useTooltipStore} from './modules/tooltipStore'
