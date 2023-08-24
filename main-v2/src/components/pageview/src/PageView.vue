@@ -66,6 +66,7 @@ const getClass = computed(() => {
 /*最外层,全屏 64+36+1+1+6 有点奇怪*/
 .view-full {
   height: calc(100vh - 64px);
+  overflow: hidden;
 }
 
 .view-sider {
@@ -85,6 +86,7 @@ const getClass = computed(() => {
 .view-body {
   flex: 1;
   position: relative;
+  overflow: auto;
 }
 
 .body-toggle {

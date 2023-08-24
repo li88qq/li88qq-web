@@ -8,7 +8,7 @@ const tooltipStore = useTooltipStore()
 
 //表格列
 export const columns = [
-    {dataIndex: 'index', title: '序号',customRender:render_index},
+    {dataIndex: 'index', title: '序号',},
     {dataIndex: 'id', title: 'id'},
     {dataIndex: 'name', title: '名称',ellipsis:{showTitle:false},customCell:(record)=>tooltipStore.customCell_cell(record['name']),},
     {dataIndex: 'name2', title: '名称2',ellipsis:{showTitle:false},customCell:(record)=>tooltipStore.customCell_cell(record['name2'],),},
@@ -32,4 +32,4 @@ const initDataSource = (size = 100) => {
 }
 
 //表格数据
-export const dataSource = initDataSource(8)
+export const dataSource = initDataSource(123)
