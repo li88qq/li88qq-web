@@ -8,6 +8,7 @@
         <a-space>
           <a-button type="primary">新增</a-button>
           <a-button type="primary" danger>删除</a-button>
+          <a-slider v-bind="sliderRt" style="width: 400px;"/>
         </a-space>
         <a-space>
           <AppstoreOutlined></AppstoreOutlined>
@@ -22,21 +23,23 @@
     <a-table v-bind="tableRt">
       <template #bodyCell="{column,index}">
         <template v-if="column['dataIndex']==='index'">
-          {{getPagination.start+index+1}}
+          {{ getPagination.start + index + 1 }}
         </template>
       </template>
     </a-table>
     <a-card size="small">
       <div class="table-pagination">
         <span>
-          {{`${getPagination.start+1} - ${getPagination.end} ${getPagination.count}条记录，共${paginationRt.total}条记录` }}</span>
+          {{
+            `${getPagination.start + 1} - ${getPagination.end} ${getPagination.count}条记录，共${paginationRt.total}条记录`
+          }}</span>
         <a-pagination v-bind="paginationRt"/>
       </div>
     </a-card>
   </div>
 </template>
 <script setup lang="ts">
-import {ref, reactive, onMounted, computed,watch} from 'vue'
+import {ref, reactive, onMounted, computed, watch} from 'vue'
 import {SearchForm} from '@/components/form'
 import {
   AppstoreOutlined,
@@ -54,8 +57,8 @@ const tableRt = reactive({
   columns: columns,
   dataSource: [],
   pagination: false,
-  scroll:{
-    y:500,
+  scroll: {
+    y: 500,
   }
 })
 
@@ -102,9 +105,9 @@ const getPagination = computed(() => {
 })
 
 //更新表格数据
-const initDataSource = ()=>{
-  const {start,end} = getPagination.value
-  tableRt.dataSource = dataSource.slice(start,end)
+const initDataSource = () => {
+  const {start, end} = getPagination.value
+  tableRt.dataSource = dataSource.slice(start, end)
 }
 
 //初始化
@@ -116,12 +119,25 @@ const init = () => {
 }
 
 //监听分页变化
-watch(()=>[paginationRt.current,paginationRt.pageSize],()=>{
+watch(() => [paginationRt.current, paginationRt.pageSize], () => {
   initDataSource()
 })
 
 onMounted(() => {
   init()
+})
+
+//滑动条
+const sliderRt = reactive({
+  value: 0,
+  min: 0,
+  max: 800,
+  onChange: (value: number) => sliderRt.value = value,
+})
+
+//监听滑动条
+watch(() => sliderRt.value, value => {
+  tableRt.scroll.y = value
 })
 
 </script>
