@@ -9,4 +9,6 @@
 [MIT](https://en.wikipedia.org/wiki/MIT_License)
 
 ### 3. Thanks for free JetBrains Open Source license
-[![idea开源logo](https://www.jetbrains.com/favicon-32x32.png "idea")](https://www.jetbrains.com/)
+![JetBrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
+
+[**JetBrains**](https://jb.gg/OpenSourceSupport/)
