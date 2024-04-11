@@ -1,9 +1,7 @@
-# service-web
+# li88qq-web
 ## 1. 简介
-页面2.0整合版本,包括:
-- web:前台页面模块
-- admin:后台页面模块
-- demo:测试页面模块
+1. vue3
+2. antd4
 
 ### 2. LICENSE
 [MIT](https://en.wikipedia.org/wiki/MIT_License)

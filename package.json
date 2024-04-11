@@ -1,0 +1,30 @@
+{
+  "name": "li88qq-web",
+  "version": "1.0.0",
+  "description": "个人项目,用于学习。",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [
+    "vue",
+    "vite",
+    "antd"
+  ],
+  "author": "li88qq@163.com",
+  "license": "MIT",
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "^4.1.2",
+    "axios": "^1.6.8",
+    "dayjs": "^1.11.10",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.8"
+  }
+}
