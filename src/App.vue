@@ -1,5 +1,3 @@
 <template>
-  <div>
-    <a-button type="primary">测试</a-button>
-  </div>
+  <RouterView></RouterView>
 </template>
